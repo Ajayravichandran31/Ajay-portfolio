@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import About from "./components/About";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <Navbar />
 
       <main>
+
         <section id="home" className="hero">
           <div className="hero-content">
 
@@ -42,6 +44,9 @@ function App() {
 
           </div>
         </section>
+
+        <About />
+
       </main>
     </>
   );
