@@ -1,4 +1,34 @@
+import { useState } from "react";
 function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const response = await fetch("http://localhost:8080/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      message,
+    }),
+  });
+
+  if (response.ok) {
+    alert("Message sent successfully!");
+    setName("");
+    setEmail("");
+    setMessage("");
+  } else {
+    alert("Failed to send message.");
+  }
+};
+
   return (
     <section id="contact" className="contact-section">
       <div className="contact-container">
@@ -69,22 +99,28 @@ function Contact() {
 
           </div>
 
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={handleSubmit}>
+
+           <input
+  type="text"
+  placeholder="Your Name"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+/>
 
             <input
-              type="text"
-              placeholder="Your Name"
-            />
-
-            <input
-              type="email"
-              placeholder="Your Email"
-            />
+  type="email"
+  placeholder="Your Email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
 
             <textarea
-              rows="6"
-              placeholder="Your Message"
-            ></textarea>
+  rows="6"
+  placeholder="Your Message"
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+></textarea>
 
             <button type="submit">
               Send Message
