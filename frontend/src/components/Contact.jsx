@@ -4,30 +4,41 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+
+ const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const response = await fetch("http://localhost:8080/api/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      message,
-    }),
-  });
+  setLoading(true);
+  setStatus("");
 
-  if (response.ok) {
-  setStatus("Message sent successfully!");
-  setName("");
-  setEmail("");
-  setMessage("");
-} else {
-  setStatus("Failed to send message.");
-}
+  try {
+    const response = await fetch("http://localhost:8080/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+
+    if (response.ok) {
+      setStatus("Message sent successfully!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } else {
+      setStatus("Failed to send message.");
+    }
+  } catch (error) {
+    setStatus("Unable to connect to the server.");
+  } finally {
+    setLoading(false);
+  }
 };
 
   return (
@@ -127,9 +138,9 @@ function Contact() {
 ></textarea>
 
             {status && <p className="contact-status">{status}</p>}
-            <button type="submit">
-              Send Message
-            </button>
+            <button type="submit" disabled={loading}>
+  {loading ? "Sending..." : "Send Message"}
+</button>
 
           </form>
 
