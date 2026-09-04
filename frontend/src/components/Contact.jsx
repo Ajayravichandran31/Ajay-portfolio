@@ -3,6 +3,7 @@ function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
   e.preventDefault();
@@ -20,13 +21,13 @@ function Contact() {
   });
 
   if (response.ok) {
-    alert("Message sent successfully!");
-    setName("");
-    setEmail("");
-    setMessage("");
-  } else {
-    alert("Failed to send message.");
-  }
+  setStatus("Message sent successfully!");
+  setName("");
+  setEmail("");
+  setMessage("");
+} else {
+  setStatus("Failed to send message.");
+}
 };
 
   return (
@@ -106,22 +107,26 @@ function Contact() {
   placeholder="Your Name"
   value={name}
   onChange={(e) => setName(e.target.value)}
+  required
 />
 
-            <input
+           <input
   type="email"
   placeholder="Your Email"
   value={email}
   onChange={(e) => setEmail(e.target.value)}
+  required
 />
 
-            <textarea
+           <textarea
   rows="6"
   placeholder="Your Message"
   value={message}
   onChange={(e) => setMessage(e.target.value)}
+  required
 ></textarea>
 
+            {status && <p className="contact-status">{status}</p>}
             <button type="submit">
               Send Message
             </button>

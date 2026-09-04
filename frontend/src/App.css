@@ -1021,3 +1021,7 @@ main {
     gap: 8px;
   }
 }
+.contact-status {
+  margin-top: 10px;
+  font-size: 14px;
+}
