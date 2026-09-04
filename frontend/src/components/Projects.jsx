@@ -1,24 +1,28 @@
+import { useEffect, useState } from "react";
+
 function Projects() {
-  const projects = [
-    {
-      title: "Farmer To Consumer",
-      description:
-        "A web application designed to connect farmers directly with consumers and make product purchasing easier.",
-      technologies: ["React", "Spring Boot", "MySQL", "REST API"],
-    },
-    {
-      title: "Automatic Queue Management System",
-      description:
-        "A web-based system designed to manage queues and improve the process of handling users efficiently.",
-      technologies: ["React", "Node.js", "MongoDB"],
-    },
-    {
-      title: "Student Management System",
-      description:
-        "A web application for managing student records with CRUD operations through REST APIs.",
-      technologies: ["Java", "Spring Boot", "Spring Data JPA", "MySQL", "Postman"],
-    },
-  ];
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/projects")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Unable to load projects");
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section id="projects" className="projects-section">
@@ -35,23 +39,29 @@ function Projects() {
 
         <div className="projects-grid">
 
-          {projects.map((project) => (
-            <div className="project-card" key={project.title}>
+          {loading && <p>Loading projects...</p>}
 
-              <h3>{project.title}</h3>
+          {error && <p>{error}</p>}
 
-              <p>{project.description}</p>
+          {!loading &&
+            !error &&
+            projects.map((project) => (
+              <div className="project-card" key={project.id}>
 
-              <div className="project-technologies">
-                {project.technologies.map((technology) => (
-                  <span className="project-tag" key={technology}>
-                    {technology}
-                  </span>
-                ))}
+                <h3>{project.title}</h3>
+
+                <p>{project.description}</p>
+
+                <div className="project-technologies">
+                  {project.technologies.split(",").map((technology) => (
+                    <span className="project-tag" key={technology}>
+                      {technology.trim()}
+                    </span>
+                  ))}
+                </div>
+
               </div>
-
-            </div>
-          ))}
+            ))}
 
         </div>
 
