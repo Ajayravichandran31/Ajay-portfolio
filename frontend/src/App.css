@@ -65,7 +65,47 @@
   color: #64ffda;
 }
 
+.menu-button {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  cursor: pointer;
+}
 
+@media (max-width: 768px) {
+  .navbar-container {
+    position: relative;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #0a0a0f;
+    border-top: 1px solid #22222c;
+    border-bottom: 1px solid #22222c;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-links.nav-links-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 8px 0;
+  }
+}
 /* ========================================
    MAIN
 ======================================== */
