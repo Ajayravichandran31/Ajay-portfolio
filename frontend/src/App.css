@@ -132,7 +132,24 @@ main {
 }
 
 .hero-content {
-  max-width: 750px;
+  max-width: 650px;
+  flex: 1;
+}
+
+.hero-image {
+  flex: 0 0 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 340px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #64ffda;
+  box-shadow: 0 0 35px rgba(100, 255, 218, 0.15);
 }
 
 .hero-greeting {
@@ -282,6 +299,32 @@ main {
 
   .hero-description {
     font-size: 16px;
+  }
+    .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    flex: none;
+    margin-top: 50px;
+  }
+
+  .hero-image img {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-tech {
+    justify-content: center;
   }
 }
 

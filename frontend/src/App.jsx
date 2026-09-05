@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import profileImage from "./assets/profile.png";
 import "./App.css";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
               <span>MySQL</span>
             </div>
 
+          </div>
+                    <div className="hero-image">
+            <img src={profileImage} alt="Ajay R." />
           </div>
         </section>
 
