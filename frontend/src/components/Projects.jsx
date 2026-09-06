@@ -59,6 +59,16 @@ function Projects() {
                     </span>
                   ))}
                 </div>
+                {project.githubUrl && (
+  <a
+    href={project.githubUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="project-github"
+  >
+    View on GitHub →
+  </a>
+)}
 
               </div>
             ))}
