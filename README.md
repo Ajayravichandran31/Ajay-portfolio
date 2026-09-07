@@ -3,7 +3,10 @@
 A dynamic, fully responsive personal portfolio website designed to showcase professional projects, technical skills, and experience. This application is built using a modern full-stack architecture with a decoupled frontend and backend.
 
 ## 🚀 Live Demo
-Check out the live deployment here: [ajay-portfolio-nine-gold.vercel.app](https://vercel.app)
+
+Check out the live portfolio:
+
+👉 [View Live Portfolio](https://ajay-portfolio-nine-gold.vercel.app/)
 
 ---
 
