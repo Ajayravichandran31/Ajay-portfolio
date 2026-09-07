@@ -1,4 +1,4 @@
-# Full-Stack Developer Portfolio
+# 🚀 Ajay R. | Full-Stack Developer Portfolio
 
 A dynamic, fully responsive personal portfolio website designed to showcase professional projects, technical skills, and experience. This application is built using a modern full-stack architecture with a decoupled frontend and backend.
 
