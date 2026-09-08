@@ -39,7 +39,24 @@ function Projects() {
 
         <div className="projects-grid">
 
-          {loading && <p>Loading projects...</p>}
+          {loading &&
+  [1, 2, 3].map((item) => (
+    <div className="project-card project-skeleton" key={item}>
+      <div className="skeleton skeleton-title"></div>
+
+      <div className="skeleton skeleton-text"></div>
+      <div className="skeleton skeleton-text"></div>
+      <div className="skeleton skeleton-text short"></div>
+
+      <div className="skeleton-tags">
+        <div className="skeleton skeleton-tag"></div>
+        <div className="skeleton skeleton-tag"></div>
+        <div className="skeleton skeleton-tag"></div>
+      </div>
+
+      <div className="skeleton skeleton-link"></div>
+    </div>
+  ))}
 
           {error && <p>{error}</p>}
 
